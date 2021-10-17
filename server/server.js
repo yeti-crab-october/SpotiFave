@@ -19,13 +19,13 @@ res.status(200).sendFile(path.join(__dirname, '../src/index.html'))
 );
 
 //create post handler for the sign in page
-app.post('/api/logIn', (req, res) => {
+app.post('/api/logIn', 
   //will receive an option with password and username keys
   musicControllers.getUser,
   //add the username and password to the db
   //redirect the user to the home page
-  (req, res) => res.status(200);
-})
+  (req, res) => res.status(200)
+);
 //create get handler for user pressing the button to get their latest songs
 //get the songs that the user has listened to 
 
