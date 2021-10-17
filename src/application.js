@@ -43,7 +43,8 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token ? true : false,
-      nowPlaying: {name: 'Not Checked', albumArt: ''} 
+      nowPlaying: {name: 'Not Checked', albumArt: ''}, 
+      recentlyPlayed: [] 
     }
     // console.log(this.state)
   }
@@ -69,6 +70,19 @@ class App extends Component {
     return hashParams;
   }
 
+  getHistory() {
+    spotifyApi.getMyRecentlyPlayedTracks()
+    .then((response) => {
+      console.log('recently played tracks', response.items);
+      this.setState({
+        recentlyPlayed: response.items
+      })
+      // items[i].track.name
+      // items[i].track.artists[0].name
+    });
+  }
+
+
   getNowPlaying() {
     spotifyApi.getMyCurrentPlaybackState() 
       .then((response) => {
@@ -81,28 +95,60 @@ class App extends Component {
         })
       })
     }
+    
+    
+    render() {
+      
+      const songsArray = [];
+      for (let i = 0; i < this.state.recentlyPlayed.length; i++) {
+        songsArray.push(<Song 
+          key={i}
+          song={this.state.recentlyPlayed[i].track.name}
+          artist={this.state.recentlyPlayed[i].track.artists[0].name}
+        />)
+      }
 
+
+      return (
+        <div className="App">
+          <a href='http://localhost:8888'>Login to Spotify </a> 
+
+          <div>
+            Now Playing: { this.state.loggedIn && this.state.nowPlaying.name }
+          </div>
+
+          <div>
+            <img src={ this.state.loggedIn && this.state.nowPlaying.albumArt} style={{ height:150 }}/>
+          </div>
+
+          <div>
+            {songsArray}
+          </div>
+
+          {this.state.loggedIn && <button onClick={ () => this.getNowPlaying() }>
+              Check Now Playing 
+            </button>
+          }
+          
+          {this.state.loggedIn && <button onClick={ () => this.getHistory() }>
+              Get History
+            </button>
+          }        
+
+        </div>
+      )
+  }
+}
+
+class Song extends Component {
   render() {
-    return (
-      <div className="App">
-        <a href='http://localhost:8888'>Login to Spotify </a> 
-
-        <div>
-          Now Playing: { this.state.loggedIn && this.state.nowPlaying.name }
-        </div>
-
-        <div>
-          <img src={ this.state.loggedIn && this.state.nowPlaying.albumArt} style={{ height:150 }}/>
-        </div>
-
-        {this.state.loggedIn && <button onClick={ () => this.getNowPlaying() }>
-            Check Now Playing
-          </button>
-        }
-
+    return(
+      <div>
+        {this.props.song} by {this.props.artist}
       </div>
     )
   }
 }
+
 
 render(<App />, document.getElementById('root'));
