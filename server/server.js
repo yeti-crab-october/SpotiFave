@@ -30,7 +30,7 @@ app.post('/api/logIn',
 //get the songs that the user has listened to 
 
 
-app.listen(PORT, () => {
-    console.log(`Server listening on port: ${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`Server listening on port: ${PORT}`)
+// })
 

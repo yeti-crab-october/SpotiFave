@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./server/server.js",
     "build": "webpack serve",
-    "dev": "concurrently \"npm run build\" \"nodemon ./server/server.js\""
+    "dev": "concurrently \"npm run build\" \"nodemon ./servers/app.js\""
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "express": "^4.17.1",
     "mongoose": "^6.0.10",
     "node": "^16.10.0",
+    "node-env-run": "^4.0.2",
     "nodemon": "^2.0.13",
     "react-bootstrap": "^2.0.0-rc.0",
     "webpack": "^5.58.1",
@@ -48,18 +49,24 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
+    "@ungap/url-search-params": "^0.2.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "html-webpack-plugin": "^5.4.0",
     "path": "^0.12.7",
     "pg": "^8.7.1",
+    "querystring": "^0.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
     "reactdom": "^2.0.0",
     "regenerator-runtime": "^0.13.9",
+    "request": "^2.88.2",
     "spotify-web-api-js": "^1.5.2",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "url-search-params": "^1.1.0"
   }
 }
