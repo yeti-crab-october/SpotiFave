@@ -1,0 +1,37 @@
+* {
+  background-color: rgb(205, 140, 207);
+  font-family: 'Poppins', sans-serif;
+}
+
+button {
+	background-color: lightblue;
+	padding: 15px 32px;
+	width: 250px;
+	font-size: 16px;
+	color: rgb(41, 41, 41);
+	margin: 7px;
+  border-radius: 150px;
+}
+button:hover {
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+		0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.songDiv {
+  margin: 5px;
+  padding: 5px;
+  size: 15px;
+}
+
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+a:visited {
+  color: turquoise;
+}
+
+a:hover {
+  color: rgb(252, 59, 155);
+}
